@@ -111,8 +111,8 @@ function App() {
         <p><strong id='game-title'>Dota 2 Abilityle</strong> by Ahad Bashir</p>
       </div>
       <nav class="image-container">
-        <a className="logo" href="https://github.com/ABashir01/dota-2-abilityle/tree/master"><strong>Github</strong></a>
-        <a className="logo" href="https://github.com/ABashir01/dota-2-abilityle/tree/master"><strong>Linkedin</strong></a>
+        <a className="logo" href="https://github.com/ABashir01/dota-abilityle/tree/master"><strong>Github</strong></a>
+        <a className="logo" href="https://www.linkedin.com/in/ahad-bashir-b5382b1b7/"><strong>Linkedin</strong></a>
         <a className="logo" href="mailto: ahadb2020@gmail.com"><strong>Email</strong></a>
       </nav>
     </div>
