@@ -26,7 +26,7 @@ function App() {
   const [resultsText, setResultsText] = useState({winOrLoss: "default", heroName: 'default'});
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/get_hashmap/")
+    fetch("https://dota-abilityle-django.onrender.com/api/get_hashmap/")
       .then(res => res.json())
       .then(
         (result) => {
@@ -79,7 +79,7 @@ function App() {
     setEmptyText(false);
     setShowResults(false);
 
-    fetch("http://127.0.0.1:8000/api/get_hashmap/")
+    fetch("https://dota-abilityle-django.onrender.com/api/get_hashmap/")
       .then(res => res.json())
       .then(
         (result) => {
