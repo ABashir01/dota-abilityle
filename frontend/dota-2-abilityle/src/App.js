@@ -6,7 +6,7 @@
 
 import logo from './logo.svg';
 import './App.css';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, lazy, Suspense} from 'react';
 import axios from 'axios';
 import Results from './components/results';
 import Values from './components/values';
@@ -24,6 +24,8 @@ function App() {
   const [answer, setAnswer] = useState('');
   const [showResults, setShowResults] = useState(false);
   const [resultsText, setResultsText] = useState({winOrLoss: "default", heroName: 'default'});
+  const LazyHero = lazy(() => import('./components/hero'));
+  const LazyDescription = lazy(() => import('./components/description'))
 
   useEffect(() => {
     fetch("https://dota-abilityle-django.onrender.com/api/get_hashmap/")
@@ -104,6 +106,10 @@ function App() {
   //TODO: Sort hintlist into components
   //TODO: Move header and form into their own components
 
+  // {numberOfGuesses>=2 ? <Hero heroName={abilityData.hero ? abilityData.hero : ""}/> : null}
+  // {numberOfGuesses>=3 ? <Description description={abilityData.description ? abilityData.description : ""} heroName={abilityData.hero ? abilityData.hero : ""} abilityName={answer}/> : null}
+
+
   return (
   <div className="App">
     <div id='header'>
@@ -119,8 +125,12 @@ function App() {
     <div id="hints-list">
       {numberOfGuesses>=0 ? <div className="hint-div"><p><strong>Mana Cost: </strong> {abilityData.mana_cost ? abilityData.mana_cost : 0} </p> <p><strong>Cooldown: </strong>{abilityData.cooldown ? abilityData.cooldown : 0}</p></div> : null}
       {numberOfGuesses>=1 ? <Values text={abilityData.ability_list ? abilityData.ability_list : ""}/> : null}
-      {numberOfGuesses>=2 ? <Hero heroName={abilityData.hero ? abilityData.hero : ""}/> : null}
-      {numberOfGuesses>=3 ? <Description description={abilityData.description ? abilityData.description : ""} heroName={abilityData.hero ? abilityData.hero : ""} abilityName={answer}/> : null}
+      <Suspense fallback={null}>
+        {numberOfGuesses>=2 ? <LazyHero heroName={abilityData.hero ? abilityData.hero : ""}/> : null}
+      </Suspense>
+      <Suspense fallback={null}>
+        {numberOfGuesses>=3 ? <LazyDescription description={abilityData.description ? abilityData.description : ""} heroName={abilityData.hero ? abilityData.hero : ""} abilityName={answer}/> : null}
+      </Suspense>
     </div>
     <form onSubmit={answerEntered}>
       <input type="text" value={inputValue} onChange={handleChange} placeholder='Type Answer Here'></input>
