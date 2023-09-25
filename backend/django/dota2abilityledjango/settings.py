@@ -59,6 +59,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
+    'https://dota-2-abilityle.netlify.app/',
 ]
 
 ROOT_URLCONF = 'dota2abilityledjango.urls'
