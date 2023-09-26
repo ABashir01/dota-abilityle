@@ -122,25 +122,33 @@ function App() {
         <a className="logo" href="mailto: ahadb2020@gmail.com"><strong>Email</strong></a>
       </nav>
     </div>
-    <div id="hints-list">
-      {numberOfGuesses>=0 ? <div className="hint-div"><p><strong>Mana Cost: </strong> {abilityData.mana_cost ? abilityData.mana_cost : 0} </p> <p><strong>Cooldown: </strong>{abilityData.cooldown ? abilityData.cooldown : 0}</p></div> : null}
-      {numberOfGuesses>=1 ? <Values text={abilityData.ability_list ? abilityData.ability_list : ""}/> : null}
-      <Suspense fallback={null}>
-        {numberOfGuesses>=2 ? <LazyHero heroName={abilityData.hero ? abilityData.hero : ""}/> : null}
-      </Suspense>
-      <Suspense fallback={null}>
-        {numberOfGuesses>=3 ? <LazyDescription description={abilityData.description ? abilityData.description : ""} heroName={abilityData.hero ? abilityData.hero : ""} abilityName={answer}/> : null}
-      </Suspense>
-    </div>
-    <form onSubmit={answerEntered}>
-      <input type="text" value={inputValue} onChange={handleChange} placeholder='Type Answer Here'></input>
+
+    {isLoaded ? 
+    
+    <div className="game">
+      <div id="hints-list">
+        {numberOfGuesses>=0 ? <div className="hint-div"><p><strong>Mana Cost: </strong> {abilityData.mana_cost ? abilityData.mana_cost : 0} </p> <p><strong>Cooldown: </strong>{abilityData.cooldown ? abilityData.cooldown : 0}</p></div> : null}
+        {numberOfGuesses>=1 ? <Values text={abilityData.ability_list ? abilityData.ability_list : ""}/> : null}
+        <Suspense fallback={null}>
+          {numberOfGuesses>=2 ? <LazyHero heroName={abilityData.hero ? abilityData.hero : ""}/> : null}
+        </Suspense>
+        <Suspense fallback={null}>
+          {numberOfGuesses>=3 ? <LazyDescription description={abilityData.description ? abilityData.description : ""} heroName={abilityData.hero ? abilityData.hero : ""} abilityName={answer}/> : null}
+        </Suspense>
+      </div>
+      <form onSubmit={answerEntered}>
+        <input type="text" value={inputValue} onChange={handleChange} placeholder='Type Answer Here'></input>
+        <br />
+        <button type="submit" id="submit-button">Submit</button>
+      </form>
+      <em>{emptyText ? "Please type in an answer": ""}</em>
+      {showResults ? <Results resultsText={resultsText} buttonAction={playAgain}/> : null}
       <br />
-      <button type="submit" id="submit-button">Submit</button>
-    </form>
-    <em>{emptyText ? "Please type in an answer": ""}</em>
-    {showResults ? <Results resultsText={resultsText} buttonAction={playAgain}/> : null}
-    <br />
-    <br />
+      <br />
+    </div> 
+    
+    : <div><br /> <br /><p>Loading...</p></div>}
+    
   </div>)
 }
 
