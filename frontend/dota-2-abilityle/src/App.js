@@ -12,6 +12,7 @@ import Results from './components/results';
 import Values from './components/values';
 import Hero from './components/hero';
 import Description from './components/description';
+import {TailSpin} from 'react-loader-spinner'
 
 //TODO: Figure out what useStates I can get rid of
 function App() {
@@ -40,7 +41,6 @@ function App() {
         // instead of a catch() block so that we don't swallow
         // exceptions from actual bugs in components.
         (error) => {
-          setIsLoaded(true);
           setError(error);
         }
       )
@@ -93,7 +93,7 @@ function App() {
         // instead of a catch() block so that we don't swallow
         // exceptions from actual bugs in components.
         (error) => {
-          setIsLoaded(true);
+          // setIsLoaded(true);
           setError(error);
         }
       )
@@ -147,7 +147,14 @@ function App() {
       <br />
     </div> 
     
-    : <div><br /> <br /><p>Loading...</p></div>}
+      : <div className='loading-div'>
+          <br /> 
+          <br />
+          <TailSpin
+            color="#feffff" 
+          />
+        </div>
+    }
     
   </div>)
 }
