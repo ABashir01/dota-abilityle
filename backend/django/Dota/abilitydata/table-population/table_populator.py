@@ -8,7 +8,7 @@ import json
 import sys
 
 # conn = psycopg2.connect(host="localhost", dbname="postgres", user="postgres", \
-#                         password="Megladon.1", port=5432)
+#                         password="", port=5432)
 # cur = conn.cursor()
 
 # Drop the existing abilities table if it exists
