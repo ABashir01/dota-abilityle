@@ -14,16 +14,16 @@ from pathlib import Path
 from Dota.abilitydata.JsonHandler import JsonHandler
 import os
 import dj_database_url
-import environ
+# import environ
 
-env = environ.Env(
-    DEBUG=(bool, False)
-)
+# env = environ.Env(
+#     DEBUG=(bool, False)
+# )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+# environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -111,27 +111,27 @@ WSGI_APPLICATION = 'dota2abilityledjango.wsgi.application'
 #        'PORT': data["port"],
 #    }
 # }
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'new_dota_abilityle',
-        'USER': 'new_dota_abilityle_user',
-        'PASSWORD': env('PASSWORD'),
-        'HOST': 'dpg-cm4usq7qd2ns73em7cc0-a', 
-        'PORT': 5432,
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
-# database_url = os.environ.get("DATABASE_URL")
-# DATABASES['default'] = dj_database_url.parse(database_url)
-DATABASES["default"] = dj_database_url.parse('postgres://new_dota_abilityle_user:blQtkDul7QfnMmhqKtmILceba4DFUoSM@dpg-cm4usq7qd2ns73em7cc0-a.oregon-postgres.render.com/new_dota_abilityle')
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'new_dota_abilityle',
+#         'USER': 'new_dota_abilityle_user',
+#         'PASSWORD': env('PASSWORD'),
+#         'HOST': 'dpg-cm4usq7qd2ns73em7cc0-a', 
+#         'PORT': 5432,
+#     }
+# }
+
+database_url = os.environ.get("DATABASE_URL")
+DATABASES['default'] = dj_database_url.parse(database_url)
+# DATABASES["default"] = dj_database_url.parse('postgres://new_dota_abilityle_user:blQtkDul7QfnMmhqKtmILceba4DFUoSM@dpg-cm4usq7qd2ns73em7cc0-a.oregon-postgres.render.com/new_dota_abilityle')
 
 
 
