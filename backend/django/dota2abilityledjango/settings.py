@@ -14,22 +14,34 @@ from pathlib import Path
 from Dota.abilitydata.JsonHandler import JsonHandler
 import os
 import dj_database_url
+import environ
+
+env = environ.Env(
+    DEBUG=(bool, False)
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+# SECRET_KEY = os.environ.get("SECRET_KEY")
+# SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+# DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+# DEBUG = False
+DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = ['*']
 
+# RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')if RENDER_EXTERNAL_HOSTNAME:    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
@@ -88,7 +100,7 @@ WSGI_APPLICATION = 'dota2abilityledjango.wsgi.application'
 
 # handler = JsonHandler()
 # data = handler.json_handler()
-database_url = os.environ.get("DATABASE_URL")
+# database_url = os.environ.get("DATABASE_URL")
 # DATABASES = {
 #     'default': {
 #        'ENGINE': 'django.db.backends.postgresql',
@@ -99,15 +111,28 @@ database_url = os.environ.get("DATABASE_URL")
 #        'PORT': data["port"],
 #    }
 # }
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'new_dota_abilityle',
+        'USER': 'new_dota_abilityle_user',
+        'PASSWORD': env('PASSWORD'),
+        'HOST': 'dpg-cm4usq7qd2ns73em7cc0-a', 
+        'PORT': 5432,
     }
 }
 
-database_url = os.environ.get("DATABASE_URL")
-DATABASES['default'] = dj_database_url.parse(database_url)
+# database_url = os.environ.get("DATABASE_URL")
+# DATABASES['default'] = dj_database_url.parse(database_url)
+DATABASES["default"] = dj_database_url.parse('postgres://new_dota_abilityle_user:blQtkDul7QfnMmhqKtmILceba4DFUoSM@dpg-cm4usq7qd2ns73em7cc0-a.oregon-postgres.render.com/new_dota_abilityle')
+
 
 
 
