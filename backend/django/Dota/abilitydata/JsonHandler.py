@@ -25,7 +25,7 @@ class JsonHandler():
         #                             user=json_map["user"], 
         #                             password=json_map["password"], 
         #                             port=json_map["port"])
-        conn = psycopg2.connect("postgres://ahadb:kqWHzDEllas2ydAwNrZ09d8eSzi92Fyp@dpg-ck88el7sasqs73c5vcm0-a/dota_2_abilities")
+        conn = psycopg2.connect("postgres://new_dota_abilityle_user:blQtkDul7QfnMmhqKtmILceba4DFUoSM@dpg-cm4usq7qd2ns73em7cc0-a/new_dota_abilityle")
         cur = conn.cursor()
 
 
