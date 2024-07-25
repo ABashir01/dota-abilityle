@@ -231,7 +231,7 @@ def sql_handler():
     #                             user=json_map["user"], 
     #                             password=json_map["password"], 
     #                             port=json_map["port"])
-    conn = psycopg2.connect("postgres://new_dota_abilityle_user:blQtkDul7QfnMmhqKtmILceba4DFUoSM@dpg-cm4usq7qd2ns73em7cc0-a.oregon-postgres.render.com/new_dota_abilityle")
+    conn = psycopg2.connect("postgresql://dota_abilityle_user:g0IAUzZ9uLUtTjCawITWoyezh93sM3ir@dpg-cqgt61aju9rs73ebv2d0-a.ohio-postgres.render.com/dota_abilityle")
     cur = conn.cursor()
     
     # Drop the existing abilities table if it exists
@@ -244,7 +244,7 @@ def sql_handler():
         #                         user=json_map["user"], 
         #                         password=json_map["password"], 
         #                         port=json_map["port"])
-        conn = psycopg2.connect("postgres://new_dota_abilityle_user:blQtkDul7QfnMmhqKtmILceba4DFUoSM@dpg-cm4usq7qd2ns73em7cc0-a.oregon-postgres.render.com/new_dota_abilityle")
+        conn = psycopg2.connect("postgresql://dota_abilityle_user:g0IAUzZ9uLUtTjCawITWoyezh93sM3ir@dpg-cqgt61aju9rs73ebv2d0-a.ohio-postgres.render.com/dota_abilityle")
         cur = conn.cursor()
         # conn.rollback()
 
@@ -258,7 +258,7 @@ def sql_handler():
                             mana_cost VARCHAR(255), 
                             cooldown VARCHAR(255), 
                             ability_list TEXT);""")
-    except Exception as e:
+    except Exception as e:  
         print("There was a SQL issue: ", e)
     
     table_elements = soup_handler()
