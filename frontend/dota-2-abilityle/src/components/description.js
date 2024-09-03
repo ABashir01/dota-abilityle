@@ -11,7 +11,7 @@ function Description(props) {
             <br />
             <br />
             <div className="divider">
-                <div><img alt="An image of the ability" src={"https://www.dotafire.com/images/skill/" + imgSource + ".png"} /></div>
+                <div><img alt="The Ability" src={"https://www.dotafire.com/images/skill/" + imgSource + ".png"} /></div>
                 <br />
                 <div >{description}</div>
                 <br />

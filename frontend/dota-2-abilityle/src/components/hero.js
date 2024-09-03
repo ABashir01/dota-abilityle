@@ -10,7 +10,7 @@ function Hero(props) {
             <br />
             <br />
             <div className="divider">
-                <div><img alt='An image of the hero' src={"https://www.dotafire.com/images/hero/icon/" + dashedName + ".png"}></img></div>
+                <div><img alt='The Hero' src={"https://www.dotafire.com/images/hero/icon/" + dashedName + ".png"}></img></div>
                 <br />
                 <div >{heroName}</div>
                 <br />
