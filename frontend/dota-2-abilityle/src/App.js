@@ -81,7 +81,7 @@ function App() {
     setEmptyText(false);
     setShowResults(false);
 
-    fetch("https://dota-abilityle-django.onrender.com/api/get_hashmap/")
+    fetch("https://dota-abilityle-ahadb.pythonanywhere.com/api/get_random_ability/")
       .then(res => res.json())
       .then(
         (result) => {
