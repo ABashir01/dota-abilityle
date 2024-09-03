@@ -4,14 +4,10 @@
 //TODO: Consider getting urls from package.json
 //TODO: Add a header
 
-import logo from './logo.svg';
 import './App.css';
 import React, {useState, useEffect, lazy, Suspense} from 'react';
-import axios from 'axios';
 import Results from './components/results';
 import Values from './components/values';
-import Hero from './components/hero';
-import Description from './components/description';
 import {TailSpin} from 'react-loader-spinner'
 
 //TODO: Figure out what useStates I can get rid of
@@ -19,7 +15,6 @@ function App() {
   const [numberOfGuesses, setGuesses] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [abilityData, setAbilityData] = useState({});
-  const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [emptyText, setEmptyText] = useState(false);
   const [answer, setAnswer] = useState('');
@@ -41,7 +36,7 @@ function App() {
         // instead of a catch() block so that we don't swallow
         // exceptions from actual bugs in components.
         (error) => {
-          setError(error);
+          console.log(`There was an error fetching the ability: ${error}`);
         }
       )
   }, [])
@@ -94,7 +89,7 @@ function App() {
         // exceptions from actual bugs in components.
         (error) => {
           // setIsLoaded(true);
-          setError(error);
+          console.log(`There was an error fetching the ability: ${error}`);
         }
       )
   }

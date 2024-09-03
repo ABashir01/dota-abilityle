@@ -2,7 +2,6 @@ import React from "react";
 
 function Description(props) {
     const{description, heroName, abilityName} = props;
-    var dashedName = abilityName.replaceAll(" ", "-");
     var imgSource = heroName.replaceAll(" ", "-") + "-" + abilityName.replaceAll(" ", "-").replaceAll("(", "").replaceAll(")", "");
 
 
@@ -12,7 +11,7 @@ function Description(props) {
             <br />
             <br />
             <div className="divider">
-                <div><img src={"https://www.dotafire.com/images/skill/" + imgSource + ".png"}></img></div>
+                <div><img alt="An image of the ability" src={"https://www.dotafire.com/images/skill/" + imgSource + ".png"} /></div>
                 <br />
                 <div >{description}</div>
                 <br />

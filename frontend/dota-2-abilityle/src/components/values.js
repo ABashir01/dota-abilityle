@@ -2,13 +2,7 @@ import React from "react"
 
 function Values(props) {
     const {text} = props;
-    var trueText = '';
     var splitText = text.split(';;');
-
-    // for (var part of splitText) {
-    //     var newPart = "<p>" + part + "</p>";
-    //     trueText = trueText + newPart;
-    // }
 
     var textElements = splitText.map((part, index) => {
         if (part.includes(':')) {
