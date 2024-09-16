@@ -22,7 +22,6 @@
   },
   "eslintConfig": {
     "extends": [
-      "@babel/plugin-transform-private-property-in-object",
       "react-app",
       "react-app/jest"
     ]
