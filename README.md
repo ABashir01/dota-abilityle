@@ -1,4 +1,4 @@
-# Article Bias Checker
+# Dota 2 Abilityle
 
 A Wordle style game for guessing Dota 2 abilities. Located at [https://dota-2-abilityle.netlify.app/](https://dota-2-abilityle.netlify.app/).
 
